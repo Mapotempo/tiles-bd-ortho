@@ -1,3 +1,5 @@
+Installer les prérequis suivant : p7zip, docker.
+
 Récupère la liste de toutes les archives des orthophotographies disponibles.
 
 ```bash

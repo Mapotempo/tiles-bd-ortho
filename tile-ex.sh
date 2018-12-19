@@ -7,7 +7,7 @@ mkdir -p ${DEP} && cd ${DEP}
 
 # Ne prend que la dernière année et qu'une seule projection
 MILL=`cat ../url_list | grep "_D${DEP}_" | sed -e "s/.*E080_\([A-Z0-9]*\)_D${DEP}_\(2...\).*/\1_D${DEP}_\2/" | uniq | tail -n 1`
-cat ../url_list | grep "${MILL}" | xargs wget
+cat ../url_list | grep "${MILL}" | xargs -n 1 wget
 
 # D009 3.57G 3.18MB/s in 58m 43s
 ##Téléchargés : 244 fichiers, 281G en 1d 6h 42m 20s (2,60 MB/s)
