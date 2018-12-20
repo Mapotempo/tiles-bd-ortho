@@ -1,3 +1,7 @@
+Installer les prérequis suivant : p7zip, docker.
+
+Récupère la liste de toutes les archives des orthophotographies disponibles.
+
 ```bash
 curl http://professionnels.ign.fr/bdortho-50cm-par-departements | grep -Po '(?<=href=")[^"]*' | grep '.7z' | sed -e 's_^//_https://_' | sort | grep '\$' | grep 'BDORTHO-JP2_PACK' > url_list
 ```
@@ -22,13 +26,13 @@ Run
 ```bash
 cat <(
 for DEP in 005 008 014 015 021 022 025 027 029 02A 02B 030 031 032 034 035 039 042 043 045 046 048 049 050 051 052 053 056 059 061 062 063 065 066 067 068 072 076 081 082 083 084 085; do
-  echo "./tiles-ex.sh $DEP 15 16 17 > ${DEP}.log && rm -dr ${DEP}"
+  echo "./tile-ex.sh $DEP 15 16 17 > ${DEP}.log && rm -dr ${DEP}"
 done
 ) | parallel -j 6
 
 cat <(
 for DEP in 971 972 978; do
-  echo "./tiles-ex.sh $DEP 16 17 18 > ${DEP}.log && rm -dr ${DEP}"
+  echo "./tile-ex.sh $DEP 16 17 18 > ${DEP}.log && rm -dr ${DEP}"
 done
 ) | parallel -j 6
 ```
